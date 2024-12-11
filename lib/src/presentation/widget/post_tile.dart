@@ -54,12 +54,15 @@ class _PostTileState extends State<PostTile> with WidgetsBindingObserver {
   }
 
   void _startTimer() {
+    debugPrint("Starting timer for post: ${widget.post.title}");
     _pauseTimer();
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (widget.post.elapsedTime < widget.post.timerDuration) {
+        debugPrint("Updating timer for post: ${widget.post.title}, elapsed: ${widget.post.elapsedTime}");
         context.read<PostsBloc>().add(UpdatePostTimerEvent(widget.index, widget.post.elapsedTime + 1));
       } else {
+        debugPrint("Timer complete for post: ${widget.post.title}");
         _pauseTimer();
       }
     });

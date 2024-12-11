@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   void onTapOfList(BuildContext context, Post post, int index) {
+    debugPrint("Tapped on post: $index");
     context.read<PostsBloc>().add(MarkPostReadEvent(index));
 
     Navigator.push(
@@ -28,6 +29,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<PostsBloc>().add(LoadPostsEvent());
+
     return Scaffold(
       appBar: buildCostomAppBar(context),
       body: BlocBuilder<PostsBloc, PostsState>(
@@ -48,7 +51,6 @@ class HomeScreen extends StatelessWidget {
 
           return RefreshIndicator(
             onRefresh: () async {
-              // Trigger a refresh of posts
               context.read<PostsBloc>().add(LoadPostsEvent());
             },
             child: ListView.builder(
@@ -75,5 +77,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-

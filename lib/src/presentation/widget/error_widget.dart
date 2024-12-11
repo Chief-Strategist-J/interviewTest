@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:interview/src/presentation/bloc/post/post_bloc.dart';
+import 'package:interview/src/presentation/bloc/post/post_event.dart';
 
 class ErrorCustomWidget extends StatelessWidget {
   const ErrorCustomWidget({super.key});
@@ -18,9 +21,15 @@ class ErrorCustomWidget extends StatelessWidget {
           Text(
             'Error loading posts',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.error,
-            ),
+                  color: Theme.of(context).colorScheme.error,
+                ),
           ),
+          TextButton(
+            onPressed: () {
+              context.read<PostsBloc>().add(LoadPostsEvent());
+            },
+            child: const Text("Retry"),
+          )
         ],
       ),
     );

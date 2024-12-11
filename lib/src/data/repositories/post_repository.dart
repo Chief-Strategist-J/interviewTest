@@ -8,6 +8,7 @@ class PostsRepository {
 
   Future<List<Post>> fetchPosts() async {
     final response = await http.get(Uri.parse('$_baseUrl/posts'));
+    print("\n\n\bGet List Of Posts");
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = json.decode(response.body);
