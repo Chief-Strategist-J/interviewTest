@@ -1,7 +1,3 @@
-Here’s a simplified version of the README based on your file structure:
-
----
-
 # Flutter Post Viewer
 
 A simple mobile application built with **Flutter** to display posts fetched from the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/posts).
@@ -79,5 +75,3 @@ flutter run
 3. Run `flutter run` to start the app.
 
 ---
-
-This README provides a simple overview of the app’s features, the file structure, and how to set it up and run it.
